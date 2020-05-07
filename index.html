@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Farming Sim</title>
+    <script src="http://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3956e76dfa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="stats">
+        <h2>$<span id="money"></span></h2>
+        <h4>Stock market holdings: $<span id="holdings"></span></h4>
+        <h2>Today is <span id="date"></span> <button onclick="updateDate()">Next Day</button></h2>
+    </div>
+    <div class="storehouse">
+        <h3>Storehouse <span class="fas fa-sync" onclick="updateStorehouse()"></span></h3>
+        <ul id="storehouse"></ul>
+    </div>
+    <div id="message">Nothing's happened yet today.</div>
+
+    <h3>Stock Market</h3>
+    <button onclick="stockMarket(myHoldings)">Stock market</button>
+    
+    <h3>Livestock</h3>
+    <button onclick="chickens()">Check Chickens</button>
+    <button onclick="cows()">Check Cows</button>
+    <button onclick="sheep()">Check Sheep</button>
+    
+    <div>
+        <h3>Crops</h3>
+        <button onclick="wheat()">Harvest Wheat</button>
+        <button onclick="corn()">Harvest Corn</button>
+        <button onclick="sugarcane()">Harvest Sugarcane</button>
+        <button onclick="potatoes()">Harvest Potatoes</button>
+        <button onclick="berries()">Harvest Berries</button>
+        <button onclick="honey()">Harvest Honey</button>
+        <button onclick="fish()">Harvest Fish</button>
+        <button onclick="ice()">Harvest Ice</button>
+    </div>
+    <h3>Sell</h3>
+    <div>
+        <input id="amount-sold" type="number">
+        <select id="item-sold">
+            <option value="wheat">Wheat</option>
+            <option value="corn">Corn</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="potatoes">Potatoes</option>
+            <option value="berries">Berries</option>
+            <option value="honey">Honey</option>
+            <option value="fish">Fish</option>
+            <option value="ice">Ice</option>
+            <option value="eggs">Eggs</option>
+            <option value="milk">Milk</option>
+            <option value="wool">Wool</option>
+        </select>
+        <button onclick="sell()">Sell</button>
+    </div>
+    <div id="change-money">
+        <input id="change-money-amount" type="number">
+        <button id="submit-change-money" onclick="changeMoney()">Edit Money</button>
+        <p>If you wanna take away money you gunna have to you a negative, I ain't doing that codie-code.</p>
+    </div>
+
+    
+    <script src="main.js"></script>
+</body>
+</html>
