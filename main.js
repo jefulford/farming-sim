@@ -1,7 +1,6 @@
 function roll6() {
     return Math.floor(Math.random() * 6) + 1;
 }
-
 // SEASON
 var daily = {
     stocks: false,
@@ -68,11 +67,32 @@ function updateMoney() {
 }
 updateMoney();
 function changeMoney() {
-    var changeAmount= Number($("#change-money-amount").val());
+    var changeAmount = Number($("#change-money-amount").val());
     money = money + changeAmount;
     updateMoney();
 }
-
+function changeHoldings() {
+    var changeHoldingsAmount = Number($("#change-holdings-amount").val());
+    if (changeHoldingsAmount < 0) {
+        if (Math.abs(changeHoldingsAmount) > myHoldings) {
+            changeMessage("ERROR: you do not have enough money in your holdings account to withdraw.");
+        } else {
+            myHoldings = myHoldings + changeHoldingsAmount;
+            money = money - changeHoldingsAmount;
+            console.log("yay");
+        }
+    } else {
+        if (changeHoldingsAmount > money) {
+            changeMessage("ERROR: you do not have enough money in your account to add to holdings.");
+        } else {
+            money = money - changeHoldingsAmount;
+            myHoldings = myHoldings + changeHoldingsAmount;
+            changeMessage("Added " + changeHoldingsAmount + " to stock market holdings.");
+        }
+    }
+    updateMoney();
+    updateHoldings();
+}
 // message
 
 var message = $("div#message");
