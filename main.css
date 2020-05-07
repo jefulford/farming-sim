@@ -7,6 +7,9 @@
 body {
     font-family: Arial;
 }
+.hidden {
+    display: none;
+}
 button {
     background-color: var(--primary);
     border-radius: 6px;
@@ -17,6 +20,29 @@ button {
     margin: 10px 0;
     cursor: pointer;
 }
+input {
+    background-color: var(--primary);
+    border-radius: 6px;
+    border: 0px;
+    width: 60px;
+    height: 30px;
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+select {
+    background-color: var(--primary);
+    border-radius: 6px;
+    border: 0px;
+    width: 120px;
+    height: 30px;
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+
 .stats {
     background-color: var(--secondary);
     padding: 1% 2%;
@@ -25,25 +51,60 @@ button {
     position: relative;
 }
 
+
 /* storehouse */
 .storehouse {
     background-color: var(--primary);
     padding: 1% 2%;
     border-radius: 6px;
     display: inline-block;
-    position: absolute;
-    right: 1%;
-    top: 1%;
-    height: 25%;
+    margin: 20px 20px 20px 0;
+    float: left;
+    height: fit-content;
 }
 
 /* message */
 #message {
     background-color: var(--secondary);
     padding: 1% 2%;
+    margin: 20px 0;
     border-radius: 6px;
     display: inline-block;
-    position: absolute;
-    right: 1%;
-    top: 29%;
+    float: left;
+}
+#wrapper {
+    display: block;
+}
+
+/*  money */
+#toggle-change-money {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 20px 0;
+    opacity: .1;
+    transition: .35s all;
+
+}
+#toggle-change-money:hover {
+    opacity: 1;
+}
+#change-money {
+    background-color: var(--tertiary);
+    border-radius: 6px;
+    padding: 20px 40px;
+    width: max-content;
+}
+#change-money button, #change-money input {
+    background-color: white;
+}
+
+/* left, right */
+
+#left, #right {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 50%;
+    float: left;
+    padding: 20px;
 }

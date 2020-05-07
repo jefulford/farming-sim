@@ -96,8 +96,16 @@ function changeHoldings() {
 // message
 
 var message = $("div#message");
+messageCount = 0;
 function changeMessage(msg) {
-    message.append("<br>" + msg );
+        if (messageCount > 9) {
+            message.text(msg);
+            messageCount = 1;
+        } else {
+            message.append("<br>" + msg );
+            messageCount++;
+        }
+   
 }
 
 // STOCK MARKET
@@ -336,3 +344,8 @@ var prices = [{
     milk: 3,
     wool: 6
 }];
+
+// hide money stuff
+function hideMoney() {
+    $("#change-money").toggleClass("hidden");
+}
