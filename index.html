@@ -17,6 +17,10 @@
             <h3>Storehouse <span class="fas fa-sync" onclick="updateStorehouse()"></span></h3>
             <ul id="storehouse"></ul>
         </div>
+        <div class="inventory">
+            <h3>Inventory <span class="fas fa-sync" onclick="updateInventory()"></span></h3>
+            <ul id="inventory"></ul>
+        </div>
         <div id="message">Nothing's happened yet today.</div>
     </div>
     <div id="right">
@@ -70,7 +74,76 @@
             <button id="submit-holdings-amount" onclick="changeHoldings()">Change Holdings</button>
         </div>
     </div>
-
+    <span onclick="hideShop()" id="toggle-shop">SHOP</span>
+    <div id="shop" class="hidden">
+        <table>
+            <tr>
+                <th>Crop</th>
+                <th>Price</th>
+                <th>Plant</th>
+                <th>Harvest</th>
+            </tr>
+            <tr>
+                <td>Wheat</td>
+                <td>4</td>
+                <td>Spring</td>
+                <td>Fall</td>
+                <td><button onclick="buy('wheat')">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Corn</td>
+                <td>4</td>
+                <td>Spring</td>
+                <td>Fall</td>
+                <td><button onclick="buy('corn')">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Sugar</td>
+                <td>10</td>
+                <td>Any</td>
+                <td>1 Month</td>
+                <td><button onclick="buy('sugar')">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Potatoes</td>
+                <td>10</td>
+                <td>Any</td>
+                <td>2 Months</td>
+                <td><button onclick="buy('potatoes')">Buy</button></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Livestock</th>
+                <th>Price</th>
+                <th>Ready</th>
+            </tr>
+            <tr>
+                <td>Chicken</td>
+                <td>10</td>
+                <td>1 Day</td>
+                <td><button onclick="buy('chickens')">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Sheep</td>
+                <td>15</td>
+                <td>1 Day</td>
+                <td><button onclick="buy('sheep')">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Foal</td>
+                <td>15</td>
+                <td>2 Months</td>
+                <td><button onclick="buy('foal')">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Cow</td>
+                <td>20</td>
+                <td>1 Day</td>
+                <td><button onclick="buy('cow')">Buy</button></td>
+            </tr>
+        </table>
+    </div>
     
     
     <script src="main.js"></script>

@@ -1,22 +1,25 @@
 function roll6() {
     return Math.floor(Math.random() * 6) + 1;
 }
+var messageCount = 0;
+
 // SEASON
 var daily = {
-    stocks: false,
     chickens: false,
     cows: false,
-    fish: false
-}
-var monthly = {
-    sheep: false,
+    fish: false,
     berries: false,
     honey: false
+}
+var monthly = {
+    stocks: false,
+    sheep: false
 }
 function resetDaily() {
     Object.keys(daily).forEach(key => {
         daily[key] = false;
     })
+    messageCount = 0;
     message.text("Nothing's happened yet today.");
 }
 function resetMonthly() {
@@ -68,8 +71,18 @@ function updateMoney() {
 updateMoney();
 function changeMoney() {
     var changeAmount = Number($("#change-money-amount").val());
-    money = money + changeAmount;
-    updateMoney();
+    if (changeAmount < 0) {
+        if (Math.abs(changeAmount) > money) {
+            changeMessage("ERROR: You do not have enough money in your holdings account to withdraw.");
+        } else {
+            money = money + changeAmount;
+            updateMoney();
+        }
+    } else {
+        money = money + changeAmount;
+        updateMoney();
+    }
+    
 }
 function changeHoldings() {
     var changeHoldingsAmount = Number($("#change-holdings-amount").val());
@@ -96,7 +109,6 @@ function changeHoldings() {
 // message
 
 var message = $("div#message");
-messageCount = 0;
 function changeMessage(msg) {
         if (messageCount > 9) {
             message.text(msg);
@@ -116,52 +128,51 @@ function updateHoldings() {
 }
 updateHoldings();
 function stockMarket(holdings) {
-    if (daily.stocks == false) {
+    if (monthly.stocks == false) {
         var roll = roll6();
         switch (roll) {
             case 1:
                 // lose 1/8
                 holdings = Math.floor(holdings - (holdings * .125));
-                console.log("Lost 1/8");
+                changeMessage("Lost 1/8");
                 break;
             case 2:
                 // gain 1/4
                 holdings = Math.floor(holdings * 1.25);
-                console.log("Gained 1/4");
+                changeMessage("Gained 1/4");
                 break;
             case 3:
                 // even: -1/2; odd: 2.0
                 if (roll6() % 2) {
                     holdings = Math.floor(holdings - (holdings * .5));
-                    console.log("Lost 1/2");
+                    changeMessage("Lost 1/2");
                 } else {
                     holdings = Math.floor(holdings * 2);
-                    console.log("Gained x2");
+                    changeMessage("Gained x2");
                 }
                 break;
             case 4:
                 // gain 1/8
                 holdings = Math.floor(holdings * 1.125);
-                console.log("Gained 1/8");
+                changeMessage("Gained 1/8");
                 break;
             case 5:
                 // gain 1/2
                 holdings = Math.floor(holdings * 1.5);
-                console.log("Gained 1/2");
+                changeMessage("Gained 1/2");
                 break;
             case 6:
                 // lose 1/4
                 holdings = Math.floor((holdings - (holdings * .25)));
-                console.log("Lost 1/4");
+                changeMessage("Lost 1/4");
                 break;
         }
         holdings = holdings + 1;
-        daily.stocks = true;
-        changeMessage("Holdings now at " + holdings);
+        monthly.stocks = true;
         myHoldings = holdings;
         updateHoldings();
     } else {
-        changeMessage("Already ran stock market for today!");
+        changeMessage("Already ran stock market for this month!");
     }
 }
 
@@ -192,7 +203,12 @@ function chickens() {
 }
 
 function checkCows() {
-    return (Math.floor(Math.random() * 3) + 1)*2;
+    if (roll6() >= 3) {
+        return 1;
+    } else {
+        return 0;
+    }
+    // return (Math.floor(Math.random() * 3) + 1)*2;
 }
 function cows() {
     products.milk = products.milk + checkCows();
@@ -201,12 +217,20 @@ function cows() {
 }
 
 function checkSheep() {
-    return Math.floor(Math.random() * 6);
+    if (season[0] ==  1){
+        return Math.floor(Math.random() * 6);
+    } else {
+    }
 }
 function sheep() {
-    products.wool = products.wool + checkSheep();
-    changeMessage("You have " + products.wool + " wool.");
-    updateStorehouse();
+    if (season[0] == 1) {
+        products.wool = products.wool + checkSheep();
+        changeMessage("You have " + products.wool + " wool.");
+        updateStorehouse();
+    } else {
+        changeMessage("It isn't spring yet.");
+    }
+   
 }
 
 // products
@@ -349,3 +373,56 @@ var prices = [{
 function hideMoney() {
     $("#change-money").toggleClass("hidden");
 }
+// hide shop stuff
+function hideShop() {
+    $("#shop").toggleClass("hidden");
+}
+
+// buy
+var buyPrices = {
+    "wheat": 4,
+    "corn": 4,
+    "sugar": 10,
+    "potatoes": 10,
+    "chicken": 10,
+    "sheep": 15,
+    "foal": 15,
+    "cow": 20
+}
+function buy(item) {
+    if (buyPrices[item] <= money) {
+        money = money - buyPrices[item];
+        changeMessage("You bought 1 " + item + " seed.");
+        inventory[item]++;
+        updateMoney();
+    } else {
+        changeMessage("You don't have enough money to buy that");
+    }
+    updateInventory();
+}
+
+// inventory
+var inventory = {
+    "wheat": 0,
+    "corn": 0,
+    "sugar": 0,
+    "potatoes": 0,
+    "berries": 0,
+    "honey": 0,
+    "fish": 0,
+    "ice": 0,
+    "chickens": 0,
+    "sheep": 0,
+    "foals": 0,
+    "cows": 0
+}
+
+var inventoryUl = $("ul#inventory");
+
+function updateInventory() {
+    inventoryUl.html("");
+    for (var i = 0; i < Object.keys(inventory).length; i++) {
+        inventoryUl.append("<li>" + Object.keys(inventory)[i] + ": " + Object.values(inventory)[i] + "</li>")
+    }
+}
+updateInventory();
