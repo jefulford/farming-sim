@@ -371,11 +371,31 @@ var prices = [{
 
 // hide money stuff
 function hideMoney() {
-    $("#change-money").toggleClass("hidden");
+    if ($("#shop").hasClass("hidden")) {
+        $("#left").toggleClass("blur");
+        $("#right").toggleClass("blur");
+        $("#change-money").toggleClass("hidden");
+    }
+    else {
+        hideShop();
+        $("#left").toggleClass("blur");
+        $("#right").toggleClass("blur");
+        $("#change-money").toggleClass("hidden");
+    }
 }
 // hide shop stuff
-function hideShop() {
-    $("#shop").toggleClass("hidden");
+function hideShop() {  
+    if ($("#change-money").hasClass("hidden")) {
+        $("#left").toggleClass("blur");
+        $("#right").toggleClass("blur");
+        $("#shop").toggleClass("hidden");
+    }
+    else {
+        hideMoney();
+        $("#left").toggleClass("blur");
+        $("#right").toggleClass("blur");
+        $("#shop").toggleClass("hidden");
+    }
 }
 
 // buy
@@ -384,6 +404,10 @@ var buyPrices = {
     "corn": 4,
     "sugar": 10,
     "potatoes": 10,
+    "berries": 20,
+    "honey": 15,
+    "fish": 15,
+    "ice": 15,
     "chicken": 10,
     "sheep": 15,
     "foal": 15,
@@ -391,6 +415,10 @@ var buyPrices = {
 }
 function buy(item) {
     if (buyPrices[item] <= money) {
+        if (item == "sheep") {
+            changeMessage("Baaaaaad! No buying Sheep in winter!");
+            return;
+        }
         money = money - buyPrices[item];
         changeMessage("You bought 1 " + item + " seed.");
         inventory[item]++;

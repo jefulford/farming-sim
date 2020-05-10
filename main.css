@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial;
+    font-family: 'Press Start 2P';
 }
 .hidden {
     display: none;
@@ -16,9 +16,10 @@ button {
     border: 0px;
     width: 200px;
     height: 30px;
-    font-size: 14px;
+    font-size: 10px;
     margin: 10px 0;
     cursor: pointer;
+    font-family: 'Press Start 2P';
 }
 input {
     background-color: var(--primary);
@@ -26,10 +27,11 @@ input {
     border: 0px;
     width: 60px;
     height: 30px;
-    font-size: 14px;
+    font-size: 10px;
     margin: 10px 0;
     padding: 0px 10px;
     cursor: pointer;
+    font-family: 'Press Start 2P';
 }
 select {
     background-color: var(--primary);
@@ -37,10 +39,11 @@ select {
     border: 0px;
     width: 120px;
     height: 30px;
-    font-size: 14px;
+    font-size: 10px;
     margin: 10px 0;
     padding: 0px 10px;
     cursor: pointer;
+    font-family: 'Press Start 2P';
 }
 
 .stats {
@@ -87,7 +90,12 @@ select {
     padding: 20px 0;
     opacity: .1;
     transition: .35s all;
-
+    position: absolute;
+    right: 20px;
+    bottom: 60px;
+}
+#toggle-shop {
+    bottom: 20px;
 }
 #toggle-change-money:hover, #toggle-shop:hover {
     opacity: 1;
@@ -97,6 +105,14 @@ select {
     border-radius: 6px;
     padding: 20px 40px;
     width: max-content;
+    position: absolute;
+    z-index: 100;
+    margin: 0 auto;
+    width: 50%;
+    overflow-x: scroll;
+    box-sizing: border-box;
+    left: 25%;
+    top: 200px;
 }
 #change-money button, #change-money input {
     background-color: white;
@@ -113,7 +129,38 @@ select {
 }
 
 /* table */
-.table-sub {
-    font-style: italic;
-    text-align: center;;
+table {
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 10px;
+}
+table tr, td, th {
+    padding: 4px 10px;
+}
+.blur {
+    opacity: .3;
+}
+
+/* extra lol */
+textarea {
+    background-color: var(--primary);
+    border: 0px solid;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 12px;
+    font-family: 'Press Start 2P';
+}
+ul {
+    font-size: 14px;
+    line-height: 2.0;
+    margin: 0px;
+}
+h2 {
+    font-size: 18px;
+}
+#message {
+    font-size: 14px;
+}
+h4 {
+    font-size: 12px;
 }
