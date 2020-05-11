@@ -8,7 +8,7 @@ var daily = {
     chickens: false,
     cows: false,
     fish: false,
-    berries: false,
+    // berries: false,
     honey: false
 }
 var monthly = {
@@ -181,7 +181,7 @@ var products = {
     corn: 0,
     sugarcane: 0,
     potatoes: 0,
-    berries: 0,
+    // berries: 0,
     honey: 0,
     fish: 0,
     ice: 0,
@@ -257,15 +257,15 @@ function potatoes() {
     changeMessage("Harvested 1 potato.");
     updateStorehouse();
 }
-function berries() {
-    if (roll6() % 2) {
-        products.berries++;
-        changeMessage("Harvested 1 berries.");
-    } else {
-        changeMessage("Harvested no berries.");
-    }
-    updateStorehouse();
-}
+// function berries() {
+//     if (roll6() % 2) {
+//         products.berries++;
+//         changeMessage("Harvested 1 berries.");
+//     } else {
+//         changeMessage("Harvested no berries.");
+//     }
+//     updateStorehouse();
+// }
 function honey() {
     if (roll6() <= 2) {
         products.honey++;
@@ -323,7 +323,7 @@ var prices = [{
     corn: 2,
     sugarcane: 3,
     potatoes: 3,
-    berries: 2, 
+    // berries: 2, 
     honey: 3, 
     fish: 4,
     ice: 3,
@@ -336,7 +336,7 @@ var prices = [{
     corn: 3,
     sugarcane: 1,
     potatoes: 3,
-    berries: 5, 
+    // berries: 5, 
     honey: 4, 
     fish: 1,
     ice: 6,
@@ -349,7 +349,7 @@ var prices = [{
     corn: 1,
     sugarcane: 1,
     potatoes: 3,
-    berries: 3, 
+    // berries: 3, 
     honey: 4, 
     fish: 2,
     ice: 1,
@@ -361,7 +361,7 @@ var prices = [{
     corn: 2,
     sugarcane: 4,
     potatoes: 4,
-    berries: 6, 
+    // berries: 6, 
     honey: 4, 
     fish: 3,
     ice: 0,
@@ -405,7 +405,7 @@ var buyPrices = {
     "corn": 4,
     "sugar": 10,
     "potatoes": 10,
-    "berries": 20,
+    // "berries": 20,
     "honey": 15,
     "fish": 15,
     "ice": 15,
@@ -436,7 +436,7 @@ var inventory = {
     "corn": 0,
     "sugar": 0,
     "potatoes": 0,
-    "berries": 0,
+    // "berries": 0,
     "honey": 0,
     "fish": 0,
     "ice": 0,
