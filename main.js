@@ -406,7 +406,7 @@ var buyPrices = {
     "sugar": 10,
     "potatoes": 10,
     // "berries": 20,
-    "honey": 15,
+    "honey": 12,
     "fish": 15,
     "ice": 15,
     "chicken": 25,
