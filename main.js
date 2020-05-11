@@ -401,7 +401,7 @@ function hideShop() {
 
 // buy
 var buyPrices = {
-    "wheat": 4,
+    "wheat": 2,
     "corn": 4,
     "sugar": 10,
     "potatoes": 10,
