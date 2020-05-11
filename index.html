@@ -68,6 +68,7 @@
         <div id="toggle-change-money" onclick="hideMoney()">$$$</div>
 
         <div id="change-money" class="hidden">
+            <span onclick="hideMoney()" class="fas fa-times"></span>
             <input id="change-money-amount" type="number">
             <button id="submit-change-money" onclick="changeMoney()">Edit Money</button>
             <p>If you wanna take away money you gunna have to you a negative, I ain't doing that codie-code.</p>
@@ -77,6 +78,7 @@
     </div>
     <span onclick="hideShop()" id="toggle-shop">SHOP</span>
     <div id="shop" class="hidden">
+        <span onclick="hideShop()" class="fas fa-times"></span>
         <table>
             <tr>
                 <th>Crop</th>
@@ -150,13 +152,13 @@
             </tr>
             <tr>
                 <td>Chicken</td>
-                <td>10</td>
+                <td>25</td>
                 <td>1 Day</td>
                 <td><button onclick="buy('chickens')">Buy</button></td>
             </tr>
             <tr>
                 <td>Sheep</td>
-                <td>15</td>
+                <td>10</td>
                 <td>1 Day</td>
                 <td><button onclick="buy('sheep')">Buy</button></td>
             </tr>
@@ -168,7 +170,7 @@
             </tr>
             <tr>
                 <td>Cow</td>
-                <td>20</td>
+                <td>40</td>
                 <td>1 Day</td>
                 <td><button onclick="buy('cow')">Buy</button></td>
             </tr>

@@ -218,14 +218,15 @@ function cows() {
 
 function checkSheep() {
     if (season[0] ==  1){
-        return Math.floor(Math.random() * 6);
+        return roll6();
     } else {
     }
 }
 function sheep() {
+    var newWool = checkSheep();
     if (season[0] == 1) {
-        products.wool = products.wool + checkSheep();
-        changeMessage("You have " + products.wool + " wool.");
+        products.wool = products.wool + newWool;
+        changeMessage("You gained " + newWool + " wool.");
         updateStorehouse();
     } else {
         changeMessage("It isn't spring yet.");
@@ -408,10 +409,10 @@ var buyPrices = {
     "honey": 15,
     "fish": 15,
     "ice": 15,
-    "chicken": 10,
-    "sheep": 15,
+    "chicken": 25,
+    "sheep": 10,
     "foal": 15,
-    "cow": 20
+    "cow": 40
 }
 function buy(item) {
     if (buyPrices[item] <= money) {

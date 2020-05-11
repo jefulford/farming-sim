@@ -164,3 +164,8 @@ h2 {
 h4 {
     font-size: 12px;
 }
+.fa-times {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
