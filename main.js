@@ -315,21 +315,35 @@ function sell() {
     var amountSold = Number($("#amount-sold").val());
     var itemSold = $("#item-sold").val();
     var profit = 0;
-    if (amountSold > products[itemSold]) {
-        changeMessage("ERROR: Not enough " + itemSold + " in inventory to sell!");
+    if (itemSold == "foals") {
+        if (amountSold > inventory[itemSold]) {
+            changeMessage("ERROR: Not enough " + itemSold + " in inventory to sell!");
+        } else {
+            profit = 25 * amountSold;
+            inventory[itemSold] = inventory[itemSold] - amountSold;
+            changeMessage("Sold " + amountSold + " " + itemSold + " for " + profit);
+            updateInventory();
+            money = money + profit;
+            updateMoney();
+        }
     } else {
-        profit = prices[season[0] - 1][itemSold] * amountSold;
-        products[itemSold] = products[itemSold] - amountSold;
-        changeMessage("Sold " + amountSold + " " + itemSold + " for " + profit);
-        updateStorehouse();
-        money = money + profit;
-        updateMoney();
+        if (amountSold > products[itemSold]) {
+            changeMessage("ERROR: Not enough " + itemSold + " in inventory to sell!");
+        } else {
+            profit = prices[season[0] - 1][itemSold] * amountSold;
+            products[itemSold] = products[itemSold] - amountSold;
+            changeMessage("Sold " + amountSold + " " + itemSold + " for " + profit);
+            updateStorehouse();
+            money = money + profit;
+            updateMoney();
+        }
     }
+   
 }
 var prices = [{
-    wheat: 3,
-    corn: 2,
-    sugarcane: 3,
+    wheat: 2,
+    corn: 3,
+    sugarcane: 2,
     potatoes: 3,
     // berries: 2, 
     honey: 3, 
@@ -340,8 +354,8 @@ var prices = [{
     wool: 6
 },
 {
-    wheat: 2,
-    corn: 3,
+    wheat: 3,
+    corn: 2,
     sugarcane: 1,
     potatoes: 3,
     // berries: 5, 
@@ -365,7 +379,7 @@ var prices = [{
     milk: 4,
     wool: 6
 }, {
-    wheat: 2,
+    wheat: 3,
     corn: 2,
     sugarcane: 4,
     potatoes: 4,
