@@ -32,7 +32,6 @@
         <button onclick="chickens()">Check Chickens</button>
         <button onclick="cows()">Check Cows</button>
         <button onclick="sheep()">Check Sheep</button>
-        
         <div>
             <h3>Crops</h3>
             <button onclick="wheat()">Harvest Wheat</button>
@@ -59,6 +58,7 @@
                 <option value="eggs">Eggs</option>
                 <option value="milk">Milk</option>
                 <option value="wool">Wool</option>
+                <option value="foals">Foals</option>
             </select>
             <button onclick="sell()">Sell</button>
         </div>
@@ -96,8 +96,8 @@
             <tr>
                 <td>Corn</td>
                 <td>4</td>
-                <td>Spring, Summer</td>
-                <td>Fall</td>
+                <td>Spring/Summer</td>
+                <td>Summer/Fall</td>
                 <td><button onclick="buy('corn')">Buy</button></td>
             </tr>
             <tr>
@@ -130,7 +130,7 @@
             </tr>
             <tr>
                 <td>Fish</td>
-                <td>15</td>
+                <td>20</td>
                 <td>Any</td>
                 <td>1 day</td>
                 <td><button onclick="buy('fish')">Buy</button></td>
@@ -166,13 +166,13 @@
                 <td>Foal</td>
                 <td>15</td>
                 <td>2 Months</td>
-                <td><button onclick="buy('foal')">Buy</button></td>
+                <td><button onclick="buy('foals')">Buy</button></td>
             </tr>
             <tr>
                 <td>Cow</td>
-                <td>40</td>
+                <td>50</td>
                 <td>1 Day</td>
-                <td><button onclick="buy('cow')">Buy</button></td>
+                <td><button onclick="buy('cows')">Buy</button></td>
             </tr>
         </table>
     </div>

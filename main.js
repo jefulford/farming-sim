@@ -276,7 +276,7 @@ function honey() {
     updateStorehouse();
 }
 function fish() {
-    if (roll6() <= 4) {
+    if (roll6() <= 3) {
         products.fish++;
         changeMessage("Harvested 1 fish.");
     } else {
@@ -328,7 +328,7 @@ var prices = [{
     fish: 4,
     ice: 3,
     eggs: 1,
-    milk: 3,
+    milk: 4,
     wool: 6
 },
 {
@@ -341,7 +341,7 @@ var prices = [{
     fish: 1,
     ice: 6,
     eggs: 1,
-    milk: 3,
+    milk: 4,
     wool: 6
 },
 {
@@ -354,7 +354,7 @@ var prices = [{
     fish: 2,
     ice: 1,
     eggs: 1,
-    milk: 3,
+    milk: 4,
     wool: 6
 }, {
     wheat: 2,
@@ -362,11 +362,11 @@ var prices = [{
     sugarcane: 4,
     potatoes: 4,
     // berries: 6, 
-    honey: 4, 
+    honey: 5, 
     fish: 3,
     ice: 0,
     eggs: 1,
-    milk: 3,
+    milk: 4,
     wool: 6
 }];
 
@@ -404,19 +404,19 @@ var buyPrices = {
     "wheat": 2,
     "corn": 4,
     "sugar": 10,
-    "potatoes": 10,
+    "potatoes": 8,
     // "berries": 20,
     "honey": 12,
-    "fish": 15,
+    "fish": 20,
     "ice": 15,
-    "chicken": 25,
+    "chickens": 25,
     "sheep": 10,
-    "foal": 15,
-    "cow": 40
+    "foals": 15,
+    "cows": 50
 }
 function buy(item) {
     if (buyPrices[item] <= money) {
-        if (item == "sheep") {
+        if (item == "sheep" && season[0] == 4) {
             changeMessage("Baaaaaad! No buying Sheep in winter!");
             return;
         }
