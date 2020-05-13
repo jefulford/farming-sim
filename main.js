@@ -129,45 +129,53 @@ function updateHoldings() {
 updateHoldings();
 function stockMarket(holdings) {
     if (monthly.stocks == false) {
-        var roll = roll6();
-        switch (roll) {
-            case 1:
-                // lose 1/8
-                holdings = Math.floor(holdings - (holdings * .125));
-                changeMessage("Lost 1/8");
-                break;
-            case 2:
-                // gain 1/4
-                holdings = Math.floor(holdings * 1.25);
-                changeMessage("Gained 1/4");
-                break;
-            case 3:
-                // even: -1/2; odd: 2.0
-                if (roll6() % 2) {
-                    holdings = Math.floor(holdings - (holdings * .5));
-                    changeMessage("Lost 1/2");
-                } else {
-                    holdings = Math.floor(holdings * 2);
-                    changeMessage("Gained x2");
-                }
-                break;
-            case 4:
-                // gain 1/8
-                holdings = Math.floor(holdings * 1.125);
-                changeMessage("Gained 1/8");
-                break;
-            case 5:
-                // gain 1/2
-                holdings = Math.floor(holdings * 1.5);
-                changeMessage("Gained 1/2");
-                break;
-            case 6:
-                // lose 1/4
-                holdings = Math.floor((holdings - (holdings * .25)));
+        if ($("#farmer-name").html().toLowerCase().includes("james")) {
+            holdings = Math.ceil(holdings - (holdings * .25));
+            if (roll6() >= 3) {
                 changeMessage("Lost 1/4");
-                break;
+            } else {
+                changeMessage("Gained 1/4");
+            }
+        } else {
+            var roll = roll6();
+            switch (roll) {
+                case 1:
+                    // lose 1/8
+                    holdings = Math.ceil(holdings - (holdings * .125));
+                    changeMessage("Lost 1/8");
+                    break;
+                case 2:
+                    // gain 1/4
+                    holdings = Math.ceil(holdings * 1.25);
+                    changeMessage("Gained 1/4");
+                    break;
+                case 3:
+                    // even: -1/2; odd: 2.0
+                    if (roll6() % 2) {
+                        holdings = Math.ceil(holdings - (holdings * .5));
+                        changeMessage("Lost 1/2");
+                    } else {
+                        holdings = Math.ceil(holdings * 2);
+                        changeMessage("Gained x2");
+                    }
+                    break;
+                case 4:
+                    // gain 1/8
+                    holdings = Math.ceil(holdings * 1.125);
+                    changeMessage("Gained 1/8");
+                    break;
+                case 5:
+                    // gain 1/2
+                    holdings = Math.ceil(holdings * 1.5);
+                    changeMessage("Gained 1/2");
+                    break;
+                case 6:
+                    // lose 1/4
+                    holdings = Math.ceil((holdings - (holdings * .25)));
+                    changeMessage("Lost 1/4");
+                    break;
+            }
         }
-        holdings = holdings + 1;
         monthly.stocks = true;
         myHoldings = holdings;
         updateHoldings();
@@ -455,3 +463,6 @@ function updateInventory() {
     }
 }
 updateInventory();
+
+
+// farmer name
